@@ -3,6 +3,7 @@ package com.kih.board.springboot.web.dto;
 import com.kih.board.springboot.domain.posts.Posts;
 import lombok.Getter;
 
+// 게시글 조회시 반환되는 dto
 @Getter
 public class PostsResponseDto {
     private Long id;

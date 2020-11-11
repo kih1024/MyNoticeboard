@@ -19,8 +19,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+// 인메모리형 관게형 데이터베이스 h2 를 사용하여 테스트
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT) // 랜덤포트를 받는다
 public class PostsApiControllerTest {
 
     @LocalServerPort
@@ -42,18 +43,18 @@ public class PostsApiControllerTest {
         //given
         String title = "title";
         String content = "content";
+        //
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                 .title(title)
                 .content(content)
                 .author("author")
                 .build();
-
         String url = "http://localhost:" + port + "/api/v1/posts";
 
-        //when
+        //when : 해당 url로 post 요청
         ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
 
-        //then
+        //then : 테스트
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
         System.out.println(responseEntity.getBody());
@@ -84,17 +85,15 @@ public class PostsApiControllerTest {
 
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
 
-        //when
+        //when : 해당 url로 put 요청
         ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
-        //then
+        //then : 테스트
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody()).isGreaterThan(0);
+        assertThat(responseEntity.getBody()).isGreaterThan(0L);
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
-
-
     }
 
 

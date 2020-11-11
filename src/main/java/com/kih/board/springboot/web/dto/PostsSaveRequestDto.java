@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+
+// 게시글 추가 될때 사용되는 dto
 @Getter
 @NoArgsConstructor
 public class PostsSaveRequestDto {
@@ -20,6 +22,7 @@ public class PostsSaveRequestDto {
         this.author = author;
     }
 
+    // 빌드 패턴 사용. Repository의 save 메소드를 사용하기 위해서 필요한 엔티티 객체를 만들어서 해당 dto의 데이터를 넣어줘서 반환
     public Posts toEntity() {
         return Posts.builder()
                 .title(title)

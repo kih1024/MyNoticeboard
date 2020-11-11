@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 public class Posts extends BaseTimeEntity {
-
+// 엔티티 클래스.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,6 +31,7 @@ public class Posts extends BaseTimeEntity {
         this.author = author;
     }
 
+    // 업데이트 쿼리를 날리지 않고 더티 체킹을 이용하기 위해서 정의
     public void update(String title, String content) {
         this.title = title;
         this.content = content;

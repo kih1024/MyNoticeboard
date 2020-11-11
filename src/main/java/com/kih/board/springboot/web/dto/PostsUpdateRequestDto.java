@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+// 게시글 수정시 사용되는 dto. 제목과 내용만 수정.
 @Getter
 @NoArgsConstructor
 public class PostsUpdateRequestDto {
