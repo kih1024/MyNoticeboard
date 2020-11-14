@@ -3,6 +3,7 @@ package com.kih.board.springboot.web;
 import com.kih.board.springboot.service.posts.PostsService;
 import com.kih.board.springboot.web.dto.PostsResponseDto;
 import com.kih.board.springboot.web.dto.PostsSaveRequestDto;
+import com.kih.board.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,13 +20,19 @@ public class PostsApiController {
     }
 
     @PutMapping("/api/v1/posts/{id}") // 게시글을 수정할때 호출.
-    public Long update(@PathVariable Long id, @RequestBody PostsSaveRequestDto requestDto) {
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto) {
         return postsService.update(id, requestDto);
     }
 
     @GetMapping("/api/v1/posts/{id}") // 게시글을 조회할때 호출.
     public PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
+    }
+
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id){
+        postsService.delete(id);
+        return id;
     }
 
 
