@@ -24,6 +24,7 @@ public class PostsService {
     public Long save(PostsSaveRequestDto requestDto){
         // 게시글 생성
         Posts posts = new Posts();
+        System.out.println("test");
 
 
         return postsRepository.save((((((requestDto.toEntity())))))).getId();
