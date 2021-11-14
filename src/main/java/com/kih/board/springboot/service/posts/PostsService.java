@@ -23,7 +23,11 @@ public class PostsService {
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
         // 게시글 생성
-        return postsRepository.save(requestDto.toEntity()).getId();
+        Posts posts = new Posts();
+
+
+        return postsRepository.save((((((requestDto.toEntity())))))).getId();
+
     }
 
     @Transactional
