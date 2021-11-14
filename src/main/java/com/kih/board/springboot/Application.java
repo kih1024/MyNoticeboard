@@ -15,5 +15,6 @@ public class Application {
         System.out.println("test");
 //        List<String> asd = List.of("asd", "asd", "wes");
 //        System.out.println(asd);
+        System.out.println("test333");
     }
 }
